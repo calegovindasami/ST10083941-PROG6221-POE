@@ -123,6 +123,7 @@ namespace ST10083941_PROG221_POE
             this.btnMortgage.TabIndex = 2;
             this.btnMortgage.Text = "Home Loan";
             this.btnMortgage.UseVisualStyleBackColor = false;
+            this.btnMortgage.Click += new System.EventHandler(this.btnMortgage_Click);
             // 
             // rtbAccommodation
             // 
@@ -147,6 +148,7 @@ namespace ST10083941_PROG221_POE
             this.btnRent.TabIndex = 0;
             this.btnRent.Text = "Renting";
             this.btnRent.UseVisualStyleBackColor = false;
+            this.btnRent.Click += new System.EventHandler(this.btnRent_Click);
             // 
             // gbIncome
             // 
@@ -306,7 +308,6 @@ namespace ST10083941_PROG221_POE
             this.gbMain.TabIndex = 7;
             this.gbMain.TabStop = false;
             this.gbMain.Text = "Welcome To Your Budget Planning App";
-            this.gbMain.Enter += new System.EventHandler(this.gbMain_Enter);
             // 
             // frmMain
             // 

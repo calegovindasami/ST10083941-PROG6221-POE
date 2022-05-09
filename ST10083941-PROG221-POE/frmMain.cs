@@ -29,5 +29,20 @@ namespace ST10083941_PROG221_POE
             
         }
 
+        private void btnMortgage_Click(object sender, EventArgs e)
+        {
+            Mortgage mortgage = new();
+            this.Hide();
+            mortgage.ShowDialog();
+            this.Show();
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            Rental rental = new();
+            this.Hide();
+            rental.ShowDialog();
+            this.Show();
+        }
     }
 }
