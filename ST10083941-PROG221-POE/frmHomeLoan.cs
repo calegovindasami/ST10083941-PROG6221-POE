@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace ST10083941_PROG221_POE
 {
-    public partial class Mortgage : Form
+    public partial class frmHomeLoan : Form
     {
 
         public double PropertyPrice { get; set; }
         public double TotalDeposit { get; set; }
         public double InterestRate { get; set; }
-        public double Repayment { get; set; }
-        public Mortgage()
+        public int MonthsToRepay { get; set; }
+        public frmHomeLoan()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace ST10083941_PROG221_POE
             PropertyPrice = Convert.ToDouble(nudPropertyPrice.Value);
             TotalDeposit = Convert.ToDouble(nudTotalDeposit.Value);
             InterestRate = Convert.ToDouble(nudInterest.Value);
-            Repayment = Convert.ToDouble(nudRepayment.Value);
+            MonthsToRepay = Convert.ToInt32(nudRepayment.Value);
             this.Close();
         }
     }

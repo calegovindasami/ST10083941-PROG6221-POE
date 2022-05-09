@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ST10083941_PROG221_POE
 {
-    public partial class Expenses : Form
+    public partial class frmExpenses : Form
     {
 
         public double Groceries { get; set; }
@@ -18,7 +18,7 @@ namespace ST10083941_PROG221_POE
         public double Travel { get; set; }
         public double PhoneBill { get; set; }
         public double Other { get; set; }
-        public Expenses()
+        public frmExpenses()
         {
             InitializeComponent();
         }

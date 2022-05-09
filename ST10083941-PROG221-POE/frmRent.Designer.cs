@@ -1,7 +1,7 @@
 ﻿
 namespace ST10083941_PROG221_POE
 {
-    partial class Rental
+    partial class frmRent
     {
         /// <summary>
         /// Required designer variable.

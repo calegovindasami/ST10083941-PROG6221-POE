@@ -1,7 +1,7 @@
 ﻿
 namespace ST10083941_PROG221_POE
 {
-    partial class Expenses
+    partial class frmExpenses
     {
         /// <summary>
         /// Required designer variable.
@@ -199,7 +199,7 @@ namespace ST10083941_PROG221_POE
             // lblTravel
             // 
             this.lblTravel.AutoSize = true;
-            this.lblTravel.Location = new System.Drawing.Point(98, 216);
+            this.lblTravel.Location = new System.Drawing.Point(98, 203);
             this.lblTravel.Name = "lblTravel";
             this.lblTravel.Size = new System.Drawing.Size(57, 20);
             this.lblTravel.TabIndex = 9;
@@ -277,7 +277,7 @@ namespace ST10083941_PROG221_POE
             this.lblGroceries.TabIndex = 0;
             this.lblGroceries.Text = "Groceries";
             // 
-            // Expenses
+            // frmExpenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -287,7 +287,7 @@ namespace ST10083941_PROG221_POE
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Expenses";
+            this.Name = "frmExpenses";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Expenses";
             this.gbExpenses.ResumeLayout(false);

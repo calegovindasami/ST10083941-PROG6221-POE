@@ -1,7 +1,7 @@
 ﻿
 namespace ST10083941_PROG221_POE
 {
-    partial class Mortgage
+    partial class frmHomeLoan
     {
         /// <summary>
         /// Required designer variable.
@@ -128,15 +128,11 @@ namespace ST10083941_PROG221_POE
             // 
             // nudInterest
             // 
-            this.nudInterest.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            this.nudInterest.DecimalPlaces = 2;
             this.nudInterest.Location = new System.Drawing.Point(115, 235);
             this.nudInterest.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
+            9999999,
+            0,
             0,
             0});
             this.nudInterest.Name = "nudInterest";
@@ -234,7 +230,7 @@ namespace ST10083941_PROG221_POE
             this.lblPropertyPrice.TabIndex = 0;
             this.lblPropertyPrice.Text = "Property Price";
             // 
-            // Mortgage
+            // frmHomeLoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -244,7 +240,7 @@ namespace ST10083941_PROG221_POE
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Mortgage";
+            this.Name = "frmHomeLoan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mortgage";
             this.gbHomeLoan.ResumeLayout(false);

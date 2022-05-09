@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace ST10083941_PROG221_POE
 {
-    public partial class Rental : Form
+    public partial class frmRent : Form
     {
         public double Rent { get; set; }
-        public Rental()
+        public frmRent()
         {
             InitializeComponent();
         }

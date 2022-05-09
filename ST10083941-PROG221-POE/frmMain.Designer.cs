@@ -292,6 +292,7 @@ namespace ST10083941_PROG221_POE
             this.btnCalculate.TabIndex = 6;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = false;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // gbMain
             // 
