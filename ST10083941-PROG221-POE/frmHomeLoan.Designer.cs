@@ -93,20 +93,30 @@ namespace ST10083941_PROG221_POE
             // nudRepayment
             // 
             this.nudRepayment.Increment = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
             this.nudRepayment.Location = new System.Drawing.Point(115, 335);
             this.nudRepayment.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
+            360,
+            0,
+            0,
+            0});
+            this.nudRepayment.Minimum = new decimal(new int[] {
+            240,
+            0,
             0,
             0});
             this.nudRepayment.Name = "nudRepayment";
             this.nudRepayment.Size = new System.Drawing.Size(163, 26);
             this.nudRepayment.TabIndex = 14;
             this.nudRepayment.ThousandsSeparator = true;
+            this.nudRepayment.Value = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -161,7 +171,7 @@ namespace ST10083941_PROG221_POE
             // nudTotalDeposit
             // 
             this.nudTotalDeposit.Increment = new decimal(new int[] {
-            100,
+            10000,
             0,
             0,
             0});
@@ -179,7 +189,7 @@ namespace ST10083941_PROG221_POE
             // nudPropertyPrice
             // 
             this.nudPropertyPrice.Increment = new decimal(new int[] {
-            100,
+            100000,
             0,
             0,
             0});

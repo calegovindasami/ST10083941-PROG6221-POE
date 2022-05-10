@@ -64,7 +64,7 @@ namespace ST10083941_PROG221_POE
             this.gbExpenses.Controls.Add(this.btnExpenses);
             this.gbExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gbExpenses.ForeColor = System.Drawing.Color.White;
-            this.gbExpenses.Location = new System.Drawing.Point(13, 260);
+            this.gbExpenses.Location = new System.Drawing.Point(12, 265);
             this.gbExpenses.Name = "gbExpenses";
             this.gbExpenses.Size = new System.Drawing.Size(439, 201);
             this.gbExpenses.TabIndex = 1;
@@ -104,7 +104,7 @@ namespace ST10083941_PROG221_POE
             this.gbAccommodation.Controls.Add(this.btnRent);
             this.gbAccommodation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gbAccommodation.ForeColor = System.Drawing.Color.White;
-            this.gbAccommodation.Location = new System.Drawing.Point(13, 476);
+            this.gbAccommodation.Location = new System.Drawing.Point(480, 45);
             this.gbAccommodation.Name = "gbAccommodation";
             this.gbAccommodation.Size = new System.Drawing.Size(439, 201);
             this.gbAccommodation.TabIndex = 2;
@@ -161,7 +161,7 @@ namespace ST10083941_PROG221_POE
             this.gbIncome.Controls.Add(this.lblIncome);
             this.gbIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gbIncome.ForeColor = System.Drawing.Color.White;
-            this.gbIncome.Location = new System.Drawing.Point(13, 40);
+            this.gbIncome.Location = new System.Drawing.Point(12, 45);
             this.gbIncome.Name = "gbIncome";
             this.gbIncome.Size = new System.Drawing.Size(439, 201);
             this.gbIncome.TabIndex = 0;
@@ -248,20 +248,20 @@ namespace ST10083941_PROG221_POE
             this.gbReport.Controls.Add(this.btnCalculate);
             this.gbReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gbReport.ForeColor = System.Drawing.Color.White;
-            this.gbReport.Location = new System.Drawing.Point(498, 40);
+            this.gbReport.Location = new System.Drawing.Point(480, 265);
             this.gbReport.Name = "gbReport";
-            this.gbReport.Size = new System.Drawing.Size(541, 637);
+            this.gbReport.Size = new System.Drawing.Size(439, 201);
             this.gbReport.TabIndex = 6;
             this.gbReport.TabStop = false;
-            this.gbReport.Text = "Report";
+            this.gbReport.Text = "Budget Report";
             // 
             // rtbReport
             // 
             this.rtbReport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtbReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rtbReport.Location = new System.Drawing.Point(23, 82);
+            this.rtbReport.Location = new System.Drawing.Point(23, 69);
             this.rtbReport.Name = "rtbReport";
-            this.rtbReport.Size = new System.Drawing.Size(499, 545);
+            this.rtbReport.Size = new System.Drawing.Size(398, 117);
             this.rtbReport.TabIndex = 8;
             this.rtbReport.Text = "";
             // 
@@ -270,25 +270,26 @@ namespace ST10083941_PROG221_POE
             this.btnReset.BackColor = System.Drawing.SystemColors.Window;
             this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(181, 25);
+            this.btnReset.Location = new System.Drawing.Point(192, 35);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(152, 44);
+            this.btnReset.Size = new System.Drawing.Size(163, 28);
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnCalculate
             // 
             this.btnCalculate.BackColor = System.Drawing.SystemColors.Window;
             this.btnCalculate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCalculate.ForeColor = System.Drawing.Color.Black;
-            this.btnCalculate.Location = new System.Drawing.Point(23, 25);
+            this.btnCalculate.Location = new System.Drawing.Point(23, 35);
             this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(152, 44);
+            this.btnCalculate.Size = new System.Drawing.Size(163, 28);
             this.btnCalculate.TabIndex = 6;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = false;
@@ -305,7 +306,7 @@ namespace ST10083941_PROG221_POE
             this.gbMain.ForeColor = System.Drawing.Color.Black;
             this.gbMain.Location = new System.Drawing.Point(0, 0);
             this.gbMain.Name = "gbMain";
-            this.gbMain.Size = new System.Drawing.Size(1051, 689);
+            this.gbMain.Size = new System.Drawing.Size(937, 482);
             this.gbMain.TabIndex = 7;
             this.gbMain.TabStop = false;
             this.gbMain.Text = "Welcome To Your Budget Planning App";
@@ -315,7 +316,7 @@ namespace ST10083941_PROG221_POE
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.ClientSize = new System.Drawing.Size(1051, 689);
+            this.ClientSize = new System.Drawing.Size(937, 482);
             this.Controls.Add(this.gbMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;

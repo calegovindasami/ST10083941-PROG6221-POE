@@ -85,16 +85,18 @@ namespace ST10083941_PROG221_POE
 
             if (bRenting == true)
             {
-                availableIncome = availableIncome - rent.GetCost();
+                availableIncome -= rent.GetCost();
             }
             else
             {
-                availableIncome = availableIncome - homeLoan.GetCost();
+                availableIncome -= homeLoan.GetCost();
             }
 
             string intro = "BUDGET REPORT\n";
-            string monthlyExpenses = tax.CostMessage() + "\n" +groceries.CostMessage() + "\n" + utility.CostMessage() + "\n" + travel.CostMessage() + "\n" +
-                  phoneBill.CostMessage() + "\n" + other.CostMessage() + "\n";
+  
+            double totalMontlyExpenses = groceries.GetCost() + utility.GetCost() + travel.GetCost() + phoneBill.GetCost() + other.GetCost();
+
+            string monthlyExpenses = $"Tax: R{tax.GetCost()}" + "\n" + $"Total Monthly Expenses: R{totalMontlyExpenses}\n";
 
             string accommodation;
 
@@ -104,14 +106,31 @@ namespace ST10083941_PROG221_POE
             }
             else
             {
-                accommodation = homeLoan.CostMessage() + "\n";
+                if (homeLoan.GetCost() > (monthlyIncome/3))
+                {
+                    accommodation = homeLoan.CostMessage() + "\n" + "CHANCE OF LOAN APPROVAL UNLIKELY." + "\n";
+                }
+                else
+                {
+                    accommodation = homeLoan.CostMessage() + "\n";
+                }
             }
+            availableIncome = Math.Round(availableIncome, 2);
 
-            string end = $"YOUR MONTHLY AVAILABLE INCOME: {availableIncome}";
+            string end = $"YOUR MONTHLY AVAILABLE INCOME: R{availableIncome}";
 
             string message = intro + monthlyExpenses + accommodation + end;
 
             rtbReport.Text = message;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            nudIncome.Value = 0;
+            nudTax.Value = 0;
+            rtbExpenses.Clear();
+            rtbAccommodation.Clear();
+            rtbReport.Clear();
         }
     }
 }
