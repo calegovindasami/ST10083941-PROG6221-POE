@@ -32,7 +32,6 @@ namespace ST10083941_PROG221_POE
             this.gbHomeLoan = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.nudRepayment = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.lblRepayment = new System.Windows.Forms.Label();
             this.nudInterest = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,7 +54,6 @@ namespace ST10083941_PROG221_POE
             this.gbHomeLoan.BackColor = System.Drawing.Color.DodgerBlue;
             this.gbHomeLoan.Controls.Add(this.btnSave);
             this.gbHomeLoan.Controls.Add(this.nudRepayment);
-            this.gbHomeLoan.Controls.Add(this.label3);
             this.gbHomeLoan.Controls.Add(this.lblRepayment);
             this.gbHomeLoan.Controls.Add(this.nudInterest);
             this.gbHomeLoan.Controls.Add(this.label2);
@@ -117,15 +115,6 @@ namespace ST10083941_PROG221_POE
             0,
             0,
             0});
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(87, 337);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 20);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "R";
             // 
             // lblRepayment
             // 
@@ -270,7 +259,6 @@ namespace ST10083941_PROG221_POE
         private System.Windows.Forms.GroupBox gbHomeLoan;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.NumericUpDown nudRepayment;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblRepayment;
         private System.Windows.Forms.NumericUpDown nudInterest;
         private System.Windows.Forms.Label label2;
