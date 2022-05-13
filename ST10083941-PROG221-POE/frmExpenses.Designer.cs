@@ -99,6 +99,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudOther
             // 
+            this.nudOther.DecimalPlaces = 2;
             this.nudOther.Increment = new decimal(new int[] {
             100,
             0,
@@ -135,6 +136,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudPhoneBill
             // 
+            this.nudPhoneBill.DecimalPlaces = 2;
             this.nudPhoneBill.Increment = new decimal(new int[] {
             100,
             0,
@@ -171,6 +173,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudTravel
             // 
+            this.nudTravel.DecimalPlaces = 2;
             this.nudTravel.Increment = new decimal(new int[] {
             100,
             0,
@@ -207,6 +210,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudUtilities
             // 
+            this.nudUtilities.DecimalPlaces = 2;
             this.nudUtilities.Increment = new decimal(new int[] {
             100,
             0,
@@ -225,6 +229,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudGroceries
             // 
+            this.nudGroceries.DecimalPlaces = 2;
             this.nudGroceries.Increment = new decimal(new int[] {
             100,
             0,

@@ -58,6 +58,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudRent
             // 
+            this.nudRent.DecimalPlaces = 2;
             this.nudRent.Increment = new decimal(new int[] {
             100,
             0,
@@ -105,7 +106,7 @@ namespace ST10083941_PROG221_POE
             this.gbRental.TabStop = false;
             this.gbRental.Text = "Renting";
             // 
-            // Rental
+            // frmRent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -115,7 +116,7 @@ namespace ST10083941_PROG221_POE
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Rental";
+            this.Name = "frmRent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rental";
             ((System.ComponentModel.ISupportInitialize)(this.nudRent)).EndInit();

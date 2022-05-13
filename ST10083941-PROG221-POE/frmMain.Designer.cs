@@ -170,6 +170,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudTax
             // 
+            this.nudTax.DecimalPlaces = 2;
             this.nudTax.Increment = new decimal(new int[] {
             1000,
             0,
@@ -188,6 +189,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudIncome
             // 
+            this.nudIncome.DecimalPlaces = 2;
             this.nudIncome.Increment = new decimal(new int[] {
             1000,
             0,

@@ -17,6 +17,7 @@ namespace ST10083941_PROG221_POE
         public frmRent()
         {
             InitializeComponent();
+            nudRent.Controls[0].Visible = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -170,6 +170,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudTotalDeposit
             // 
+            this.nudTotalDeposit.DecimalPlaces = 2;
             this.nudTotalDeposit.Increment = new decimal(new int[] {
             10000,
             0,
@@ -188,6 +189,7 @@ namespace ST10083941_PROG221_POE
             // 
             // nudPropertyPrice
             // 
+            this.nudPropertyPrice.DecimalPlaces = 2;
             this.nudPropertyPrice.Increment = new decimal(new int[] {
             100000,
             0,

@@ -20,6 +20,18 @@ namespace ST10083941_PROG221_POE
         public frmHomeLoan()
         {
             InitializeComponent();
+
+            //Removes numericUpDown controls.
+            RemoveNumericUpDownControls(nudInterest);
+            RemoveNumericUpDownControls(nudPropertyPrice);
+            RemoveNumericUpDownControls(nudRepayment);
+            RemoveNumericUpDownControls(nudTotalDeposit);
+        }
+
+        //Method created to remove the passed in NumericUpDown components arrows/controls 
+        public void RemoveNumericUpDownControls(NumericUpDown nud)
+        {
+            nud.Controls[0].Visible = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

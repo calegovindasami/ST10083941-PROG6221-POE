@@ -28,7 +28,25 @@ namespace ST10083941_PROG221_POE
         public frmMain()
         {
             InitializeComponent();
+            
+            //Removes NumericUpDown controls on form launch.
+            RemoveNumericUpDownControls(nudIncome);
+            RemoveNumericUpDownControls(nudTax);
         }
+
+        //Method created to remove the passed in NumericUpDown components arrows/controls 
+
+        //----- Code Attribution -----
+        //Website: StackOverFlow
+        //Author: user3750325 (https://stackoverflow.com/users/3750325/user3750325)
+        //Title: How to hide arrows on numericupdown controls in winforms.
+        //Link: https://stackoverflow.com/questions/29450844/how-to-hide-arrows-on-numericupdown-control-in-win-forms
+        public void RemoveNumericUpDownControls (NumericUpDown nud)
+        {
+            nud.Controls[0].Visible = false;
+        }
+
+        //----- End of Code Attribution -----
 
         private void btnExpenses_Click(object sender, EventArgs e)
         {
