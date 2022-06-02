@@ -8,25 +8,17 @@ namespace ST10083941_PROG221_POE.Classes
 {
     abstract class Expenses
     {
-        public string Name { get; set; }
-        public double Cost { get; set; }
-
         //Method to set the value of each monthly expense.
-        public void SetCost(double cost)
-        {
-            Cost = cost;
-        }
+        public abstract void SetCost(double cost);
 
-        public Expenses(string name)
-        {
-            Name = name;
-        }
+        //Method to display value of each expense.
+        public abstract string CostMessage();
 
-        public string Message()
-        {
-            return $"{Name} : {Cost}";
-        }
+        //Method to get the value of each monthly expense
+        public abstract double GetCost();
 
+        //Array to store the values for each expense in each class.
+        protected double[] arrExpenses = new double[7];
 
         //Global constants to identify the position of each expense within the array.
         public const int MTHLY_TAX = 0;

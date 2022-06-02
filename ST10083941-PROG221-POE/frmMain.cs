@@ -14,26 +14,14 @@ namespace ST10083941_PROG221_POE
     public partial class frmMain : Form
     {
         //Objects of each expense is created globally so the same instance can be referenced in multiple methods.
-        List<Expenses> expense = new() 
-        {
-            new Groceries("Groceries"),
-            new HomeLoan("Home Loan"),
-            new Other("Other Costs"),
-            new PhoneBill("Phone Bill"),
-            new Rent("Rent"),
-            new Tax("Tax Deduction"),
-            new Travel("Travel Costs"),
-            new Utility("Utility Costs")
-        };
-
-        const int GROCERIES = 0;
-        const int HOMELOAN = 1;
-        const int OTHER = 2;
-        const int PHONEBILL = 3;
-        const int RENT = 4;
-        const int TAX = 5;
-        const int TRAVEL = 6;
-        const int UTILITY = 7;
+        Groceries groceries = new();
+        HomeLoan homeLoan = new();
+        Other other = new();
+        PhoneBill phoneBill = new();
+        Rent rent = new();
+        Tax tax = new();
+        Travel travel = new();
+        Utility utility = new();
 
         //Variable to track whether or not the user is renting or purchasing a property.
         bool bRenting;
@@ -69,22 +57,18 @@ namespace ST10083941_PROG221_POE
             this.Show();
 
             //Sets the monthly expenses values from the input entered within the expense form.
-            expense[GROCERIES].SetCost(frmExpenses.Groceries);
-            expense[UTILITY].SetCost(frmExpenses.Utilities);
-            expense[TRAVEL].SetCost(frmExpenses.Travel);
-            expense[PHONEBILL].SetCost(frmExpenses.PhoneBill);
-            expense[OTHER].SetCost(frmExpenses.Other);
+            groceries.SetCost(frmExpenses.Groceries);
+            utility.SetCost(frmExpenses.Utilities);
+            travel.SetCost(frmExpenses.Travel);
+            phoneBill.SetCost(frmExpenses.PhoneBill);
+            other.SetCost(frmExpenses.Other);
 
             //Displays the monthly expenses within the monthly expense rich text box.
-            string monthlyExpenses =
-                expense[GROCERIES].Message() + "\n" +
-                expense[UTILITY].Message() + "\n" +
-                expense[TRAVEL].Message() + "\n" +
-                expense[PHONEBILL].Message() + "\n" +
-                expense[OTHER].Message() + "\n"
-                ;
+            string monthlyExpenses = 
+                  groceries.CostMessage() + "\n" + utility.CostMessage() + "\n" + travel.CostMessage() + "\n" +
+                  phoneBill.CostMessage() + "\n" + other.CostMessage();
 
-            rtbExpenses.Text = "COST OF EXPENSES PER MONTH:" + "\n" +  monthlyExpenses + "This worked";
+            rtbExpenses.Text = "COST OF EXPENSES PER MONTH:" + "\n" +  monthlyExpenses;
         }
 
         private void btnMortgage_Click(object sender, EventArgs e)

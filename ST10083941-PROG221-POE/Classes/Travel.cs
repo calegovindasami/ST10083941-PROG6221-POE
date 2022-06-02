@@ -8,9 +8,22 @@ namespace ST10083941_PROG221_POE.Classes
 {
     class Travel : Expenses
     {
-        public Travel(string name) : base(name)
+        //Cost message of the corresponding expense.
+        public override string CostMessage()
         {
+            return $"Travel: R{arrExpenses[MTHLY_TRAVEL]}";
+        }
 
+        //Sets the corresponding expense to the correct array position.
+        public override void SetCost(double cost)
+        {
+            arrExpenses[MTHLY_TRAVEL] = cost;
+        }
+
+        //Returns the cost of the corresponding expense.
+        public override double GetCost()
+        {
+            return arrExpenses[MTHLY_TRAVEL];
         }
     }
 }
