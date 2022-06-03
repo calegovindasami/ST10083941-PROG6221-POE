@@ -12,6 +12,7 @@ namespace ST10083941_PROG221_POE.Classes
         {
 
         }
+        public double Deposit { get; set; }
         //Calculates the monthly cost of the home loan.
         public double CalculateCost(double propertyPrice, double totalDeposit, double interestRate, int monthsToRepay)
         {

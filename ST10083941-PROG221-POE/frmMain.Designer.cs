@@ -48,6 +48,9 @@ namespace ST10083941_PROG221_POE
             this.btnReset = new System.Windows.Forms.Button();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.gbMain = new System.Windows.Forms.GroupBox();
+            this.gbVehicle = new System.Windows.Forms.GroupBox();
+            this.rtbVehicle = new System.Windows.Forms.RichTextBox();
+            this.btnVehicle = new System.Windows.Forms.Button();
             this.gbExpenses.SuspendLayout();
             this.gbAccommodation.SuspendLayout();
             this.gbIncome.SuspendLayout();
@@ -55,6 +58,7 @@ namespace ST10083941_PROG221_POE
             ((System.ComponentModel.ISupportInitialize)(this.nudIncome)).BeginInit();
             this.gbReport.SuspendLayout();
             this.gbMain.SuspendLayout();
+            this.gbVehicle.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbExpenses
@@ -250,7 +254,7 @@ namespace ST10083941_PROG221_POE
             this.gbReport.Controls.Add(this.btnCalculate);
             this.gbReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gbReport.ForeColor = System.Drawing.Color.White;
-            this.gbReport.Location = new System.Drawing.Point(480, 265);
+            this.gbReport.Location = new System.Drawing.Point(12, 475);
             this.gbReport.Name = "gbReport";
             this.gbReport.Size = new System.Drawing.Size(439, 201);
             this.gbReport.TabIndex = 6;
@@ -299,6 +303,7 @@ namespace ST10083941_PROG221_POE
             // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.gbVehicle);
             this.gbMain.Controls.Add(this.gbReport);
             this.gbMain.Controls.Add(this.gbIncome);
             this.gbMain.Controls.Add(this.gbAccommodation);
@@ -308,17 +313,56 @@ namespace ST10083941_PROG221_POE
             this.gbMain.ForeColor = System.Drawing.Color.Black;
             this.gbMain.Location = new System.Drawing.Point(0, 0);
             this.gbMain.Name = "gbMain";
-            this.gbMain.Size = new System.Drawing.Size(937, 482);
+            this.gbMain.Size = new System.Drawing.Size(1038, 682);
             this.gbMain.TabIndex = 7;
             this.gbMain.TabStop = false;
             this.gbMain.Text = "Welcome To Your Budget Planning App";
+            // 
+            // gbVehicle
+            // 
+            this.gbVehicle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.gbVehicle.Controls.Add(this.rtbVehicle);
+            this.gbVehicle.Controls.Add(this.btnVehicle);
+            this.gbVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.gbVehicle.ForeColor = System.Drawing.Color.White;
+            this.gbVehicle.Location = new System.Drawing.Point(480, 265);
+            this.gbVehicle.Name = "gbVehicle";
+            this.gbVehicle.Size = new System.Drawing.Size(439, 201);
+            this.gbVehicle.TabIndex = 7;
+            this.gbVehicle.TabStop = false;
+            this.gbVehicle.Text = "Vehicle";
+            // 
+            // rtbVehicle
+            // 
+            this.rtbVehicle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtbVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rtbVehicle.Location = new System.Drawing.Point(28, 69);
+            this.rtbVehicle.Name = "rtbVehicle";
+            this.rtbVehicle.ReadOnly = true;
+            this.rtbVehicle.Size = new System.Drawing.Size(330, 117);
+            this.rtbVehicle.TabIndex = 1;
+            this.rtbVehicle.Text = "";
+            // 
+            // btnVehicle
+            // 
+            this.btnVehicle.BackColor = System.Drawing.SystemColors.Window;
+            this.btnVehicle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnVehicle.ForeColor = System.Drawing.Color.Black;
+            this.btnVehicle.Location = new System.Drawing.Point(28, 35);
+            this.btnVehicle.Name = "btnVehicle";
+            this.btnVehicle.Size = new System.Drawing.Size(163, 28);
+            this.btnVehicle.TabIndex = 0;
+            this.btnVehicle.Text = "Vehicle Loan";
+            this.btnVehicle.UseVisualStyleBackColor = false;
+            this.btnVehicle.Click += new System.EventHandler(this.btnVehicle_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.ClientSize = new System.Drawing.Size(937, 482);
+            this.ClientSize = new System.Drawing.Size(1038, 682);
             this.Controls.Add(this.gbMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
@@ -334,6 +378,7 @@ namespace ST10083941_PROG221_POE
             ((System.ComponentModel.ISupportInitialize)(this.nudIncome)).EndInit();
             this.gbReport.ResumeLayout(false);
             this.gbMain.ResumeLayout(false);
+            this.gbVehicle.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -359,6 +404,9 @@ namespace ST10083941_PROG221_POE
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.GroupBox gbMain;
+        private System.Windows.Forms.GroupBox gbVehicle;
+        private System.Windows.Forms.RichTextBox rtbVehicle;
+        private System.Windows.Forms.Button btnVehicle;
     }
 }
 

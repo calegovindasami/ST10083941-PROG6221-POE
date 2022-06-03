@@ -34,7 +34,6 @@ namespace ST10083941_PROG221_POE
             this.nudRepayment = new System.Windows.Forms.NumericUpDown();
             this.lblRepayment = new System.Windows.Forms.Label();
             this.nudInterest = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblInterest = new System.Windows.Forms.Label();
             this.nudTotalDeposit = new System.Windows.Forms.NumericUpDown();
             this.nudPropertyPrice = new System.Windows.Forms.NumericUpDown();
@@ -56,7 +55,6 @@ namespace ST10083941_PROG221_POE
             this.gbHomeLoan.Controls.Add(this.nudRepayment);
             this.gbHomeLoan.Controls.Add(this.lblRepayment);
             this.gbHomeLoan.Controls.Add(this.nudInterest);
-            this.gbHomeLoan.Controls.Add(this.label2);
             this.gbHomeLoan.Controls.Add(this.lblInterest);
             this.gbHomeLoan.Controls.Add(this.nudTotalDeposit);
             this.gbHomeLoan.Controls.Add(this.nudPropertyPrice);
@@ -138,15 +136,6 @@ namespace ST10083941_PROG221_POE
             this.nudInterest.Size = new System.Drawing.Size(163, 26);
             this.nudInterest.TabIndex = 11;
             this.nudInterest.ThousandsSeparator = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(87, 237);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "R";
             // 
             // lblInterest
             // 
@@ -261,7 +250,6 @@ namespace ST10083941_PROG221_POE
         private System.Windows.Forms.NumericUpDown nudRepayment;
         private System.Windows.Forms.Label lblRepayment;
         private System.Windows.Forms.NumericUpDown nudInterest;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblInterest;
         private System.Windows.Forms.NumericUpDown nudTotalDeposit;
         private System.Windows.Forms.NumericUpDown nudPropertyPrice;

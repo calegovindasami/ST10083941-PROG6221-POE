@@ -8,8 +8,8 @@ namespace ST10083941_PROG221_POE.Classes
 {
     abstract class Expenses
     {
-        public string Name { get; set; }
-        public double Cost { get; set; }
+        public string Name { get; protected set; }
+        public double Cost { get; protected set; }
 
         //Method to set the value of each monthly expense.
         public void SetCost(double cost)
@@ -36,5 +36,13 @@ namespace ST10083941_PROG221_POE.Classes
         public const int MTHLY_PHONEBILL = 4;
         public const int MTHLY_OTHER = 5;
         public const int MTHLY_ACCOMODATION = 6;
+
+        protected virtual double CalculateCost(double propertyPrice, double totalDeposit, double interestRate, int monthsToRepay)
+        {
+            double loanAmount = propertyPrice - totalDeposit;
+            double interest = interestRate / 100;
+            double monthlyCost = ((loanAmount * (interest / 12)) * (Math.Pow(1 + (interest / 12), monthsToRepay))) / (Math.Pow(1 + (interest / 12), monthsToRepay) - 1);
+            return Math.Round(monthlyCost, 2);
+        }
     }
 }
