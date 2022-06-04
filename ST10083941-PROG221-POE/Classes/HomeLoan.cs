@@ -8,31 +8,39 @@ namespace ST10083941_PROG221_POE.Classes
 {
     class HomeLoan : Expenses
     {
-        //Cost message of the corresponding expense.
-        public override string CostMessage()
+        //Properties of the HomeLoan class for calculation.
+        public double PropertyPrice { get; private set; }
+        public double TotalDeposit { get; private set; }
+        public double InterestRate { get; private set; }
+        public int MonthsToRepay { get; private set; }
+        public double Income { get; set; }
+
+        public HomeLoan(string name) : base(name)
         {
-            return $"Home loan: R{arrExpenses[MTHLY_ACCOMODATION]}";
+
         }
 
-        //Sets the corresponding expense to the correct array position.
-        public override void SetCost(double cost)
+        //Sets the properties using values from frmMain
+        public void SetProperties(double propertyPrice, double totalDeposit, double interestRate, int monthsToRepay, double income)
         {
-            arrExpenses[MTHLY_ACCOMODATION] = cost;
+            PropertyPrice = propertyPrice;
+            TotalDeposit = totalDeposit;
+            InterestRate = interestRate;
+            MonthsToRepay = monthsToRepay;
+            Income = income;
         }
 
+        //Delegate to keep track of the monthy home loan cost.
+        public delegate void MonthlyPayment(double monthlyPayment);
+        
         //Calculates the monthly cost of the home loan.
-        public double CalculateCost(double propertyPrice, double totalDeposit, double interestRate, int monthsToRepay)
+        public double CalculateCost(MonthlyPayment monthlyPayment)
         {
-            double loanAmount = propertyPrice - totalDeposit;
-            double interest = interestRate / 100;
-            double monthlyCost = ((loanAmount * (interest / 12)) * (Math.Pow(1 + (interest / 12), monthsToRepay))) / (Math.Pow(1 + (interest / 12), monthsToRepay) - 1);
+            double loanAmount = PropertyPrice - TotalDeposit;
+            double interest = InterestRate / 100;
+            double monthlyCost = ((loanAmount * (interest / 12)) * (Math.Pow(1 + (interest / 12), MonthsToRepay))) / (Math.Pow(1 + (interest / 12), MonthsToRepay) - 1);
+            monthlyPayment(Math.Round(monthlyCost, 2));
             return Math.Round(monthlyCost, 2);
-        }
-
-        //Returns the cost of the corresponding expense.
-        public override double GetCost()
-        {
-            return arrExpenses[MTHLY_ACCOMODATION];
         }
     }
 }

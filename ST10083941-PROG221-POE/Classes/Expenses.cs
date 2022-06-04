@@ -8,25 +8,27 @@ namespace ST10083941_PROG221_POE.Classes
 {
     abstract class Expenses
     {
+        //Properties of all the derived classes using Expenses as a base class.
+        public string Name { get; protected set; }
+        public double Cost { get; protected set; }
+
         //Method to set the value of each monthly expense.
-        public abstract void SetCost(double cost);
+        public void SetCost(double cost)
+        {
+            Cost = cost;
+        }
 
-        //Method to display value of each expense.
-        public abstract string CostMessage();
+        //Sets the name for each expense using the constructor
+        public Expenses(string name)
+        {
+            Name = name;
+        }
 
-        //Method to get the value of each monthly expense
-        public abstract double GetCost();
+        //Displays the derived classes costs and name.
+        public string Message()
+        {
+            return $"{Name} : R{Cost}";
+        }
 
-        //Array to store the values for each expense in each class.
-        protected double[] arrExpenses = new double[7];
-
-        //Global constants to identify the position of each expense within the array.
-        public const int MTHLY_TAX = 0;
-        public const int MTHLY_GROCERIES = 1;
-        public const int MTHLY_UTILITIES = 2;
-        public const int MTHLY_TRAVEL = 3;
-        public const int MTHLY_PHONEBILL = 4;
-        public const int MTHLY_OTHER = 5;
-        public const int MTHLY_ACCOMODATION = 6;
     }
 }

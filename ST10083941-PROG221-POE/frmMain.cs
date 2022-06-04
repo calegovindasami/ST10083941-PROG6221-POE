@@ -9,19 +9,37 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ST10083941_PROG221_POE.Classes;
 
+
 namespace ST10083941_PROG221_POE
 {
     public partial class frmMain : Form
     {
-        //Objects of each expense is created globally so the same instance can be referenced in multiple methods.
-        Groceries groceries = new();
-        HomeLoan homeLoan = new();
-        Other other = new();
-        PhoneBill phoneBill = new();
-        Rent rent = new();
-        Tax tax = new();
-        Travel travel = new();
-        Utility utility = new();
+        //List of each expense object
+        List<Expenses> expense = new()
+        {
+            new Groceries("Groceries"),
+            new HomeLoan("Home Loan"),
+            new Other("Other Costs"),
+            new PhoneBill("Phone Bill"),
+            new Rent("Rent"),
+            new Tax("Tax Deduction"),
+            new Travel("Travel Costs"),
+            new Utility("Utility Costs"),
+            new Vehicle("Vehicle Cost")
+
+        };
+
+        //Constants to keep track of the position of each object within the list.
+        const int GROCERIES = 0;
+        const int HOMELOAN = 1;
+        const int OTHER = 2;
+        const int PHONEBILL = 3;
+        const int RENT = 4;
+        const int TAX = 5;
+        const int TRAVEL = 6;
+        const int UTILITY = 7;
+        const int VEHICLE = 8;
+
 
         //Variable to track whether or not the user is renting or purchasing a property.
         bool bRenting;
@@ -56,17 +74,22 @@ namespace ST10083941_PROG221_POE
             frmExpenses.ShowDialog();
             this.Show();
 
-            //Sets the monthly expenses values from the input entered within the expense form.
-            groceries.SetCost(frmExpenses.Groceries);
-            utility.SetCost(frmExpenses.Utilities);
-            travel.SetCost(frmExpenses.Travel);
-            phoneBill.SetCost(frmExpenses.PhoneBill);
-            other.SetCost(frmExpenses.Other);
+            //Sets the monthly expenses values from the input entered within the derived classes.
+            expense[GROCERIES].SetCost(frmExpenses.Groceries);
+            expense[UTILITY].SetCost(frmExpenses.Utilities);
+            expense[TRAVEL].SetCost(frmExpenses.Travel);
+            expense[PHONEBILL].SetCost(frmExpenses.PhoneBill);
+            expense[OTHER].SetCost(frmExpenses.Other);
+
 
             //Displays the monthly expenses within the monthly expense rich text box.
-            string monthlyExpenses = 
-                  groceries.CostMessage() + "\n" + utility.CostMessage() + "\n" + travel.CostMessage() + "\n" +
-                  phoneBill.CostMessage() + "\n" + other.CostMessage();
+            string monthlyExpenses =
+                expense[GROCERIES].Message() + "\n" +
+                expense[UTILITY].Message() + "\n" +
+                expense[TRAVEL].Message() + "\n" +
+                expense[PHONEBILL].Message() + "\n" +
+                expense[OTHER].Message() + "\n"
+                ;
 
             rtbExpenses.Text = "COST OF EXPENSES PER MONTH:" + "\n" +  monthlyExpenses;
         }
@@ -80,17 +103,26 @@ namespace ST10083941_PROG221_POE
             frmHomeLoan.ShowDialog();
             this.Show();
 
-            //Assigns the input home loan details to values then uses it to instantiate an object using the
-            //variables as parameters.
+            //Assigns the input home loan details to values then sets the properties of the homeloan class as the variables.
             double propertyPrice = frmHomeLoan.PropertyPrice;
             double totalDeposit = frmHomeLoan.TotalDeposit;
             double interest = frmHomeLoan.InterestRate;
             int monthsToRepay = frmHomeLoan.MonthsToRepay;
-            double monthlyLoanCost = homeLoan.CalculateCost(propertyPrice, totalDeposit, interest, monthsToRepay);
-            homeLoan.SetCost(monthlyLoanCost);
+            double income = Convert.ToDouble(nudIncome.Value);
+
+            HomeLoan homeLoan = (HomeLoan)expense[HOMELOAN];
+
+            homeLoan.SetProperties(propertyPrice, totalDeposit, interest, monthsToRepay, income);
+
+            double monthlyLoanCost = homeLoan.CalculateCost(HomeLoanAlert);
+            expense[HOMELOAN].SetCost(Math.Round(monthlyLoanCost, 2));
+            expense[RENT].SetCost(0);
+
+            string message = $" HOME LOAN\n Property Price R{homeLoan.PropertyPrice}\n Total Deposit R{homeLoan.TotalDeposit}\n Interest Rate {homeLoan.InterestRate}%\n" +
+                $" Months to Repay: {homeLoan.MonthsToRepay} months\n TOTAL MONTHLY COST: R{homeLoan.Cost}";
 
             //Displays the monthly home loan cost.
-            rtbAccommodation.Text = "COST OF ACCOMMODATION PER MONTH:" + "\n" + homeLoan.CostMessage();
+            rtbAccommodation.Text = message;
         }
 
         private void btnRent_Click(object sender, EventArgs e)
@@ -103,75 +135,90 @@ namespace ST10083941_PROG221_POE
             this.Show();
 
             //Assigns the input in form to the rent object value.
-            rent.SetCost(frmRent.Rent);
+            expense[RENT].SetCost(frmRent.Rent);
+            expense[HOMELOAN].SetCost(0);
 
             //Displays the monthly rental cost.
-            rtbAccommodation.Text = "COST OF ACCOMMODATION PER MONTH:" + "\n" + rent.CostMessage();
+            rtbAccommodation.Text = "COST OF ACCOMMODATION PER MONTH:" + "\n" + expense[RENT].Message();
         }
 
-        private void btnCalculate_Click(object sender, EventArgs e)
+        //Method to be called to alert the user that their expenses exceed 75% of their income.
+        public void ExpenseAlert(double total)
         {
-            //Sets the income and tax deduction to the corresponding object.
-            double monthlyIncome = Convert.ToDouble(nudIncome.Value);
-            tax.SetCost(Convert.ToDouble(nudTax.Value));
+            double alertAmount = Convert.ToDouble(nudIncome.Value) * (0.75);
 
-            //Calculates the available income not including renting/home loan
-            double availableIncome = monthlyIncome - (groceries.GetCost() + other.GetCost() + phoneBill.GetCost() + 
-               tax.GetCost() + travel.GetCost() + utility.GetCost() );
-
-            //Calculates the available income after all expenses are paid and whether they rent or have a home loan.
-            if (bRenting == true)
+            if (total > alertAmount)
             {
-                availableIncome -= rent.GetCost();
+                MessageBox.Show("Your monthly expenses exceed 75% of your monthly income!");
             }
-            else
-            {
-                availableIncome -= homeLoan.GetCost();
-            }
-
-            //String which displays all the expenses as well as a warning if their home loan repayment is more than 
-            //1/3 of their income.
-            string intro = "BUDGET REPORT\n";
-  
-            double totalMontlyExpenses = groceries.GetCost() + utility.GetCost() + travel.GetCost() + phoneBill.GetCost() + other.GetCost();
-
-            string monthlyExpenses = $"Tax: R{tax.GetCost()}" + "\n" + $"Total Monthly Expenses: R{totalMontlyExpenses}\n";
-
-            string accommodation;
-
-            if (bRenting == true)
-            {
-                accommodation = rent.CostMessage() + "\n";
-            }
-            else
-            {
-                if (homeLoan.GetCost() > (monthlyIncome/3))
-                {
-                    accommodation = homeLoan.CostMessage() + "\n" + "CHANCE OF LOAN APPROVAL UNLIKELY." + "\n";
-                }
-                else
-                {
-                    accommodation = homeLoan.CostMessage() + "\n";
-                }
-            }
-            availableIncome = Math.Round(availableIncome, 2);
-
-            string end = $"YOUR MONTHLY AVAILABLE INCOME: R{availableIncome}";
-
-            string message = intro + monthlyExpenses + accommodation + end;
-
-            rtbReport.Text = message;
         }
 
+        //Opens the vehicle form, saves the data within the vehicle object and displays the data.
+        private void btnVehicle_Click(object sender, EventArgs e)
+        {
+            frmVehicle frmVehicle = new();
+            this.Hide();
+            frmVehicle.ShowDialog();
+            this.Show();
+
+            ((Vehicle)expense[VEHICLE]).SetProperties(frmVehicle.ModelMake, frmVehicle.PurchasePrice, frmVehicle.TotalDeposit,
+                frmVehicle.InterestRate, frmVehicle.InsurancePremium);
+
+            double monthlyCost = ((Vehicle)expense[VEHICLE]).CalculateRepayment();
+            expense[VEHICLE].SetCost(Math.Round(monthlyCost, 2));
+
+            Vehicle vehicle = (Vehicle)expense[VEHICLE];
+
+            string message = $" VEHICLE LOAN\n Vehicle Model Make: {vehicle.ModelMake}\n Purchase Price: R{vehicle.PurchasePrice}\n Total Deposit: R{vehicle.TotalDeposit}\n" +
+                $" Interest Rate: {vehicle.InterestRate}%\n Insurance Premium: R{vehicle.InsurancePremium}\n Total Monthly Cost: R{vehicle.Cost}";
+
+            rtbVehicle.Text = message;
+
+
+        }
+
+        //Opens the report form and sends values through.
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            double income = Convert.ToDouble(nudIncome.Value);
+            expense[TAX].SetCost(Convert.ToDouble(nudTax.Value));
+            frmReport frmReport = new(expense, income);
+            this.Hide();
+            frmReport.ShowDialog();
+            this.Close();
+
+
+        }
+
+        //Method that alerts user when their homeloan exceeds 1/3 of their income.
+        public void HomeLoanAlert(double loan)
+        {
+            double income = Convert.ToDouble(nudIncome.Value);
+            if (loan > (income * 1/3))
+            {
+                MessageBox.Show("Warning! Your monthly home loan installment exceeds 1/3rd of your income.");
+            }
+        }
+
+        //Sets the maximum value tax can be based on the income.
+        private void nudIncome_ValueChanged(object sender, EventArgs e)
+        {
+            nudTax.Maximum = nudIncome.Value;
+        }
+        
+        //Resets all components and objects.
         private void btnReset_Click(object sender, EventArgs e)
         {
-            //Resets all the values of the fields within the form.
             nudIncome.Value = 0;
             nudTax.Value = 0;
             rtbExpenses.Clear();
             rtbAccommodation.Clear();
-            rtbReport.Clear();
-        }
+            rtbVehicle.Clear();
 
+            foreach (Expenses bill in expense)
+            {
+                bill.SetCost(0);
+            }
+        }
     }
 }

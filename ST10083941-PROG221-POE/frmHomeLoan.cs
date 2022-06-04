@@ -43,5 +43,11 @@ namespace ST10083941_PROG221_POE
             MonthsToRepay = Convert.ToInt32(nudRepayment.Value);
             this.Close();
         }
+        
+        //Sets the total deposit maximum value based on the property price.
+        private void nudPropertyPrice_ValueChanged(object sender, EventArgs e)
+        {
+            nudTotalDeposit.Maximum = nudPropertyPrice.Value;
+        }
     }
 }
