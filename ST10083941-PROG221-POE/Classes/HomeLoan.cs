@@ -8,6 +8,7 @@ namespace ST10083941_PROG221_POE.Classes
 {
     class HomeLoan : Expenses
     {
+        //Properties of the HomeLoan class for calculation.
         public double PropertyPrice { get; private set; }
         public double TotalDeposit { get; private set; }
         public double InterestRate { get; private set; }
@@ -19,6 +20,7 @@ namespace ST10083941_PROG221_POE.Classes
 
         }
 
+        //Sets the properties using values from frmMain
         public void SetProperties(double propertyPrice, double totalDeposit, double interestRate, int monthsToRepay, double income)
         {
             PropertyPrice = propertyPrice;
@@ -28,7 +30,9 @@ namespace ST10083941_PROG221_POE.Classes
             Income = income;
         }
 
+        //Delegate to keep track of the monthy home loan cost.
         public delegate void MonthlyPayment(double monthlyPayment);
+        
         //Calculates the monthly cost of the home loan.
         public double CalculateCost(MonthlyPayment monthlyPayment)
         {

@@ -14,7 +14,7 @@ namespace ST10083941_PROG221_POE
 {
     public partial class frmMain : Form
     {
-        //Objects of each expense is created globally so the same instance can be referenced in multiple methods.
+        //List of each expense object
         List<Expenses> expense = new()
         {
             new Groceries("Groceries"),
@@ -29,6 +29,7 @@ namespace ST10083941_PROG221_POE
 
         };
 
+        //Constants to keep track of the position of each object within the list.
         const int GROCERIES = 0;
         const int HOMELOAN = 1;
         const int OTHER = 2;
@@ -73,7 +74,7 @@ namespace ST10083941_PROG221_POE
             frmExpenses.ShowDialog();
             this.Show();
 
-            //Sets the monthly expenses values from the input entered within the expense form.
+            //Sets the monthly expenses values from the input entered within the derived classes.
             expense[GROCERIES].SetCost(frmExpenses.Groceries);
             expense[UTILITY].SetCost(frmExpenses.Utilities);
             expense[TRAVEL].SetCost(frmExpenses.Travel);
@@ -102,10 +103,7 @@ namespace ST10083941_PROG221_POE
             frmHomeLoan.ShowDialog();
             this.Show();
 
-            
-
-            //Assigns the input home loan details to values then uses it to instantiate an object using the
-            //variables as parameters.
+            //Assigns the input home loan details to values then sets the properties of the homeloan class as the variables.
             double propertyPrice = frmHomeLoan.PropertyPrice;
             double totalDeposit = frmHomeLoan.TotalDeposit;
             double interest = frmHomeLoan.InterestRate;
@@ -144,25 +142,7 @@ namespace ST10083941_PROG221_POE
             rtbAccommodation.Text = "COST OF ACCOMMODATION PER MONTH:" + "\n" + expense[RENT].Message();
         }
 
-        //Adds up all monthly expenses
-        public double TotalExpenses(DelExpense delExpense)
-        {
-            string allExpenses = "";
-            double totalExpenses = 0;
-            foreach (Expenses bill in expense)
-            {
-                if (bill.Cost > 0)
-                {
-                    allExpenses = bill.Message() + "\n";
-                    totalExpenses += bill.Cost;
-                }
-            }
-            delExpense(totalExpenses);
-            return totalExpenses;
-        }
-
-        public delegate void DelExpense(double totalExpenses);
-
+        //Method to be called to alert the user that their expenses exceed 75% of their income.
         public void ExpenseAlert(double total)
         {
             double alertAmount = Convert.ToDouble(nudIncome.Value) * (0.75);
@@ -173,6 +153,7 @@ namespace ST10083941_PROG221_POE
             }
         }
 
+        //Opens the vehicle form, saves the data within the vehicle object and displays the data.
         private void btnVehicle_Click(object sender, EventArgs e)
         {
             frmVehicle frmVehicle = new();
@@ -196,6 +177,7 @@ namespace ST10083941_PROG221_POE
 
         }
 
+        //Opens the report form and sends values through.
         private void btnReport_Click(object sender, EventArgs e)
         {
             double income = Convert.ToDouble(nudIncome.Value);
@@ -203,17 +185,39 @@ namespace ST10083941_PROG221_POE
             frmReport frmReport = new(expense, income);
             this.Hide();
             frmReport.ShowDialog();
-            this.Show();
+            this.Close();
 
 
         }
 
+        //Method that alerts user when their homeloan exceeds 1/3 of their income.
         public void HomeLoanAlert(double loan)
         {
             double income = Convert.ToDouble(nudIncome.Value);
             if (loan > (income * 1/3))
             {
                 MessageBox.Show("Warning! Your monthly home loan installment exceeds 1/3rd of your income.");
+            }
+        }
+
+        //Sets the maximum value tax can be based on the income.
+        private void nudIncome_ValueChanged(object sender, EventArgs e)
+        {
+            nudTax.Maximum = nudIncome.Value;
+        }
+        
+        //Resets all components and objects.
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            nudIncome.Value = 0;
+            nudTax.Value = 0;
+            rtbExpenses.Clear();
+            rtbAccommodation.Clear();
+            rtbVehicle.Clear();
+
+            foreach (Expenses bill in expense)
+            {
+                bill.SetCost(0);
             }
         }
     }

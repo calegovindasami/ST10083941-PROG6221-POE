@@ -32,6 +32,8 @@ namespace ST10083941_PROG221_POE
             this.rtbAllExpenses = new System.Windows.Forms.RichTextBox();
             this.btnDesc = new System.Windows.Forms.Button();
             this.btnAsc = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rtbAllExpenses
@@ -72,12 +74,44 @@ namespace ST10083941_PROG221_POE
             this.btnAsc.UseVisualStyleBackColor = false;
             this.btnAsc.Click += new System.EventHandler(this.btnAsc_Click);
             // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Window;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.Location = new System.Drawing.Point(12, 341);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(163, 50);
+            this.btnSave.TabIndex = 19;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.BackColor = System.Drawing.SystemColors.Window;
+            this.btnReturn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReturn.ForeColor = System.Drawing.Color.Black;
+            this.btnReturn.Location = new System.Drawing.Point(214, 341);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(163, 50);
+            this.btnReturn.TabIndex = 20;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = false;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.ClientSize = new System.Drawing.Size(394, 393);
+            this.ClientSize = new System.Drawing.Size(394, 403);
+            this.Controls.Add(this.btnReturn);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAsc);
             this.Controls.Add(this.btnDesc);
             this.Controls.Add(this.rtbAllExpenses);
@@ -94,5 +128,7 @@ namespace ST10083941_PROG221_POE
         private System.Windows.Forms.RichTextBox rtbAllExpenses;
         private System.Windows.Forms.Button btnDesc;
         private System.Windows.Forms.Button btnAsc;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

@@ -97,11 +97,6 @@ namespace ST10083941_PROG221_POE
             // 
             this.nudInterest.DecimalPlaces = 2;
             this.nudInterest.Location = new System.Drawing.Point(115, 329);
-            this.nudInterest.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
             this.nudInterest.Name = "nudInterest";
             this.nudInterest.Size = new System.Drawing.Size(163, 26);
             this.nudInterest.TabIndex = 21;
@@ -203,6 +198,7 @@ namespace ST10083941_PROG221_POE
             this.nudPurchasePrice.Size = new System.Drawing.Size(163, 26);
             this.nudPurchasePrice.TabIndex = 8;
             this.nudPurchasePrice.ThousandsSeparator = true;
+            this.nudPurchasePrice.ValueChanged += new System.EventHandler(this.nudPurchasePrice_ValueChanged);
             // 
             // label1
             // 

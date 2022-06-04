@@ -48,6 +48,7 @@ namespace ST10083941_PROG221_POE
             this.gbVehicle = new System.Windows.Forms.GroupBox();
             this.rtbVehicle = new System.Windows.Forms.RichTextBox();
             this.btnVehicle = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.gbExpenses.SuspendLayout();
             this.gbAccommodation.SuspendLayout();
             this.gbIncome.SuspendLayout();
@@ -159,6 +160,7 @@ namespace ST10083941_PROG221_POE
             this.gbIncome.Controls.Add(this.lblTax);
             this.gbIncome.Controls.Add(this.lblCurrency);
             this.gbIncome.Controls.Add(this.lblIncome);
+            this.gbIncome.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.gbIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gbIncome.ForeColor = System.Drawing.Color.White;
             this.gbIncome.Location = new System.Drawing.Point(12, 45);
@@ -205,6 +207,7 @@ namespace ST10083941_PROG221_POE
             this.nudIncome.Size = new System.Drawing.Size(163, 26);
             this.nudIncome.TabIndex = 7;
             this.nudIncome.ThousandsSeparator = true;
+            this.nudIncome.ValueChanged += new System.EventHandler(this.nudIncome_ValueChanged);
             // 
             // label1
             // 
@@ -244,6 +247,7 @@ namespace ST10083941_PROG221_POE
             // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.btnReset);
             this.gbMain.Controls.Add(this.btnReport);
             this.gbMain.Controls.Add(this.gbVehicle);
             this.gbMain.Controls.Add(this.gbIncome);
@@ -268,7 +272,7 @@ namespace ST10083941_PROG221_POE
             this.btnReport.ForeColor = System.Drawing.Color.Black;
             this.btnReport.Location = new System.Drawing.Point(12, 472);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(912, 66);
+            this.btnReport.Size = new System.Drawing.Size(439, 66);
             this.btnReport.TabIndex = 8;
             this.btnReport.Text = "Generate Report";
             this.btnReport.UseVisualStyleBackColor = false;
@@ -312,6 +316,21 @@ namespace ST10083941_PROG221_POE
             this.btnVehicle.Text = "Vehicle Loan";
             this.btnVehicle.UseVisualStyleBackColor = false;
             this.btnVehicle.Click += new System.EventHandler(this.btnVehicle_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReset.ForeColor = System.Drawing.Color.Black;
+            this.btnReset.Location = new System.Drawing.Point(480, 472);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(439, 66);
+            this.btnReset.TabIndex = 9;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // frmMain
             // 
@@ -359,6 +378,7 @@ namespace ST10083941_PROG221_POE
         private System.Windows.Forms.RichTextBox rtbVehicle;
         private System.Windows.Forms.Button btnVehicle;
         private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 
