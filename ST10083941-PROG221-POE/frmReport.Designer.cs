@@ -77,7 +77,7 @@ namespace ST10083941_PROG221_POE
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.ClientSize = new System.Drawing.Size(995, 509);
+            this.ClientSize = new System.Drawing.Size(394, 393);
             this.Controls.Add(this.btnAsc);
             this.Controls.Add(this.btnDesc);
             this.Controls.Add(this.rtbAllExpenses);
