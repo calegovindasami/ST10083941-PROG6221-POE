@@ -39,7 +39,6 @@ namespace ST10083941_PROG221_POE
         const int UTILITY = 7;
         const int VEHICLE = 8;
 
-        double totalMontlyExpenses;
 
         //Variable to track whether or not the user is renting or purchasing a property.
         bool bRenting;
@@ -81,6 +80,7 @@ namespace ST10083941_PROG221_POE
             expense[PHONEBILL].SetCost(frmExpenses.PhoneBill);
             expense[OTHER].SetCost(frmExpenses.Other);
 
+
             //Displays the monthly expenses within the monthly expense rich text box.
             string monthlyExpenses =
                 expense[GROCERIES].Message() + "\n" +
@@ -110,12 +110,20 @@ namespace ST10083941_PROG221_POE
             double totalDeposit = frmHomeLoan.TotalDeposit;
             double interest = frmHomeLoan.InterestRate;
             int monthsToRepay = frmHomeLoan.MonthsToRepay;
-            double monthlyLoanCost = ((HomeLoan)expense[HOMELOAN]).CalculateCost(propertyPrice, totalDeposit, interest, monthsToRepay);
-            expense[HOMELOAN].SetCost(monthlyLoanCost);
+
+            HomeLoan homeLoan = (HomeLoan)expense[HOMELOAN];
+
+            homeLoan.SetProperties(propertyPrice, totalDeposit, interest, monthsToRepay);
+
+            double monthlyLoanCost = homeLoan.CalculateCost();
+            expense[HOMELOAN].SetCost(Math.Round(monthlyLoanCost, 2));
             expense[RENT].SetCost(0);
 
+            string message = $" HOME LOAN\n Property Price R{homeLoan.PropertyPrice}\n Total Deposit R{homeLoan.TotalDeposit}\n Interest Rate {homeLoan.InterestRate}%\n" +
+                $" Months to Repay: {homeLoan.MonthsToRepay} months\n TOTAL MONTHLY COST: R{homeLoan.Cost}";
+
             //Displays the monthly home loan cost.
-            rtbAccommodation.Text = "COST OF ACCOMMODATION PER MONTH:" + "\n" + expense[HOMELOAN].Message();
+            rtbAccommodation.Text = message;
         }
 
         private void btnRent_Click(object sender, EventArgs e)
@@ -133,74 +141,6 @@ namespace ST10083941_PROG221_POE
 
             //Displays the monthly rental cost.
             rtbAccommodation.Text = "COST OF ACCOMMODATION PER MONTH:" + "\n" + expense[RENT].Message();
-        }
-
-        private void btnCalculate_Click(object sender, EventArgs e)
-        {
-            //Sets the income and tax deduction to the corresponding object.
-            double monthlyIncome = Convert.ToDouble(nudIncome.Value);
-            expense[TAX].SetCost(Convert.ToDouble(nudTax.Value));
-
-            //Calculates the available income not including renting/home loan
-            double availableIncome = monthlyIncome - (expense[GROCERIES].Cost + expense[OTHER].Cost + expense[PHONEBILL].Cost +
-               expense[TAX].Cost + expense[TRAVEL].Cost + expense[UTILITY].Cost );
-
-            //Calculates the available income after all expenses are paid and whether they rent or have a home loan.
-            if (bRenting == true)
-            {
-                availableIncome -= expense[RENT].Cost;
-            }
-            else
-            {
-                availableIncome -= expense[HOMELOAN].Cost;
-            }
-
-            //String which displays all the expenses as well as a warning if their home loan repayment is more than 
-            //1/3 of their income.
-            string intro = "BUDGET REPORT\n";
-  
-            totalMontlyExpenses = expense[GROCERIES].Cost + expense[UTILITY].Cost 
-                + expense[TRAVEL].Cost + expense[PHONEBILL].Cost + expense[OTHER].Cost;
-
-            string monthlyExpenses = $"Tax: R{expense[TAX].Cost}" + "\n" + $"Total Monthly Expenses: R{totalMontlyExpenses}\n";
-
-            string accommodation;
-
-            if (bRenting == true)
-            {
-                accommodation = expense[RENT].Message() + "\n";
-            }
-            else
-            {
-                if (expense[HOMELOAN].Cost > (monthlyIncome/3))
-                {
-                    accommodation = expense[HOMELOAN].Message() + " - " + "CHANCE OF LOAN APPROVAL UNLIKELY." + "\n";
-                }
-                else
-                {
-                    accommodation = expense[HOMELOAN].Message() + "\n";
-                }
-            }
-
-            availableIncome = Math.Round(availableIncome, 2);
-
-            string totalExpenses = $"TOTAL EXPENSES: {TotalExpenses(ExpenseAlert)}\n";
-
-            string end = $"\nYOUR MONTHLY AVAILABLE INCOME: R{availableIncome}";
-
-            string message = intro + monthlyExpenses + accommodation + totalExpenses + end;
-
-            rtbReport.Text = message;
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            //Resets all the values of the fields within the form.
-            nudIncome.Value = 0;
-            nudTax.Value = 0;
-            rtbExpenses.Clear();
-            rtbAccommodation.Clear();
-            rtbReport.Clear();
         }
 
         //Adds up all monthly expenses
@@ -239,15 +179,30 @@ namespace ST10083941_PROG221_POE
             frmVehicle.ShowDialog();
             this.Show();
 
-            string modelMake = frmVehicle.ModelMake;
-            double purchasePrice = frmVehicle.PurchasePrice;
-            double totalDeposit = frmVehicle.TotalDeposit;
-            double interestRate = frmVehicle.InterestRate;
-            double insurancePremium = frmVehicle.InsurancePremium;
+            ((Vehicle)expense[VEHICLE]).SetProperties(frmVehicle.ModelMake, frmVehicle.PurchasePrice, frmVehicle.TotalDeposit,
+                frmVehicle.InterestRate, frmVehicle.InsurancePremium);
 
-            double monthlyCost = ((Vehicle)expense[VEHICLE]).CalculateRepayment(purchasePrice, totalDeposit, interestRate, insurancePremium);
-            expense[VEHICLE].SetCost(monthlyCost);
-            ((Vehicle)expense[VEHICLE]).ModelMake = modelMake;
+            double monthlyCost = ((Vehicle)expense[VEHICLE]).CalculateRepayment();
+            expense[VEHICLE].SetCost(Math.Round(monthlyCost, 2));
+
+            Vehicle vehicle = (Vehicle)expense[VEHICLE];
+
+            string message = $" VEHICLE LOAN\n Vehicle Model Make: {vehicle.ModelMake}\n Purchase Price: R{vehicle.PurchasePrice}\n Total Deposit: R{vehicle.TotalDeposit}\n" +
+                $" Interest Rate: {vehicle.InterestRate}%\n Insurance Premium: R{vehicle.InsurancePremium}\n Total Monthly Cost: R{vehicle.Cost}";
+
+            rtbVehicle.Text = message;
+
+
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            double income = Convert.ToDouble(nudIncome.Value);
+            expense[TAX].SetCost(Convert.ToDouble(nudTax.Value));
+            frmReport frmReport = new(expense, income);
+            this.Hide();
+            frmReport.ShowDialog();
+            this.Show();
 
 
         }

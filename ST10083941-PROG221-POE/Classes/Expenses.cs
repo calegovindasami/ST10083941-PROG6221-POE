@@ -24,7 +24,7 @@ namespace ST10083941_PROG221_POE.Classes
 
         public string Message()
         {
-            return $"{Name} : {Cost}";
+            return $"{Name} : R{Cost}";
         }
 
 
@@ -37,12 +37,5 @@ namespace ST10083941_PROG221_POE.Classes
         public const int MTHLY_OTHER = 5;
         public const int MTHLY_ACCOMODATION = 6;
 
-        protected virtual double CalculateCost(double propertyPrice, double totalDeposit, double interestRate, int monthsToRepay)
-        {
-            double loanAmount = propertyPrice - totalDeposit;
-            double interest = interestRate / 100;
-            double monthlyCost = ((loanAmount * (interest / 12)) * (Math.Pow(1 + (interest / 12), monthsToRepay))) / (Math.Pow(1 + (interest / 12), monthsToRepay) - 1);
-            return Math.Round(monthlyCost, 2);
-        }
     }
 }

@@ -28,7 +28,7 @@ namespace ST10083941_PROG221_POE
             ModelMake = tbModelMake.Text;
             PurchasePrice = Convert.ToDouble(nudPurchasePrice.Value);
             TotalDeposit = Convert.ToDouble(nudTotalDeposit.Value);
-            InterestRate = Convert.ToDouble(nudInsurance.Value);
+            InterestRate = Convert.ToDouble(nudInterest.Value);
             InsurancePremium = Convert.ToDouble(nudInsurance.Value);
             this.Close();
         }

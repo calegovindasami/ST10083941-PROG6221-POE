@@ -9,18 +9,32 @@ namespace ST10083941_PROG221_POE.Classes
     class Vehicle : Expenses
     {
         public string ModelMake { get; set; }
+        public double PurchasePrice { get; set; }
+        public double TotalDeposit { get; set; }
+        public double InterestRate { get; set; }
+        public double InsurancePremium { get; set; }
         public Vehicle(string name) : base(name)
         {
 
         }
 
-        public double CalculateRepayment(double purchasePrice, double totalDeposit, double interestRate, double insurancePremium)
+        public void SetProperties(string modelMake, double purchasePrice, double totalDeposit, double interestRate, double insurancePremium)
         {
-            double loanAmount = purchasePrice - totalDeposit;
-            double totalAmount = loanAmount * (interestRate / 100);
+            ModelMake = modelMake;
+            PurchasePrice = purchasePrice;
+            TotalDeposit = totalDeposit;
+            InterestRate = interestRate ;
+            InsurancePremium = insurancePremium;
+        }
+
+        public double CalculateRepayment()
+        {
+            double loanAmount = PurchasePrice - TotalDeposit;
+            double totalAmount = loanAmount +  (loanAmount * (InterestRate / 100));
             double monthlyCost = totalAmount / 60;
-            double totalExpenses = monthlyCost + insurancePremium;
+            double totalExpenses = monthlyCost + InsurancePremium;
             return totalExpenses;
         }
     }
 }
+    

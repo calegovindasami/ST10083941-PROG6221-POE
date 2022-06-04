@@ -43,11 +43,8 @@ namespace ST10083941_PROG221_POE
             this.lblTax = new System.Windows.Forms.Label();
             this.lblCurrency = new System.Windows.Forms.Label();
             this.lblIncome = new System.Windows.Forms.Label();
-            this.gbReport = new System.Windows.Forms.GroupBox();
-            this.rtbReport = new System.Windows.Forms.RichTextBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnCalculate = new System.Windows.Forms.Button();
             this.gbMain = new System.Windows.Forms.GroupBox();
+            this.btnReport = new System.Windows.Forms.Button();
             this.gbVehicle = new System.Windows.Forms.GroupBox();
             this.rtbVehicle = new System.Windows.Forms.RichTextBox();
             this.btnVehicle = new System.Windows.Forms.Button();
@@ -56,7 +53,6 @@ namespace ST10083941_PROG221_POE
             this.gbIncome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudIncome)).BeginInit();
-            this.gbReport.SuspendLayout();
             this.gbMain.SuspendLayout();
             this.gbVehicle.SuspendLayout();
             this.SuspendLayout();
@@ -246,65 +242,10 @@ namespace ST10083941_PROG221_POE
             this.lblIncome.TabIndex = 0;
             this.lblIncome.Text = "Gross Monthly Income (Before Deductions)";
             // 
-            // gbReport
-            // 
-            this.gbReport.BackColor = System.Drawing.Color.DodgerBlue;
-            this.gbReport.Controls.Add(this.rtbReport);
-            this.gbReport.Controls.Add(this.btnReset);
-            this.gbReport.Controls.Add(this.btnCalculate);
-            this.gbReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gbReport.ForeColor = System.Drawing.Color.White;
-            this.gbReport.Location = new System.Drawing.Point(12, 475);
-            this.gbReport.Name = "gbReport";
-            this.gbReport.Size = new System.Drawing.Size(439, 201);
-            this.gbReport.TabIndex = 6;
-            this.gbReport.TabStop = false;
-            this.gbReport.Text = "Budget Report";
-            // 
-            // rtbReport
-            // 
-            this.rtbReport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtbReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rtbReport.Location = new System.Drawing.Point(23, 69);
-            this.rtbReport.Name = "rtbReport";
-            this.rtbReport.Size = new System.Drawing.Size(398, 117);
-            this.rtbReport.TabIndex = 8;
-            this.rtbReport.Text = "";
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.SystemColors.Window;
-            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(192, 35);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(163, 28);
-            this.btnReset.TabIndex = 7;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnCalculate
-            // 
-            this.btnCalculate.BackColor = System.Drawing.SystemColors.Window;
-            this.btnCalculate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCalculate.ForeColor = System.Drawing.Color.Black;
-            this.btnCalculate.Location = new System.Drawing.Point(23, 35);
-            this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(163, 28);
-            this.btnCalculate.TabIndex = 6;
-            this.btnCalculate.Text = "Calculate";
-            this.btnCalculate.UseVisualStyleBackColor = false;
-            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
-            // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.btnReport);
             this.gbMain.Controls.Add(this.gbVehicle);
-            this.gbMain.Controls.Add(this.gbReport);
             this.gbMain.Controls.Add(this.gbIncome);
             this.gbMain.Controls.Add(this.gbAccommodation);
             this.gbMain.Controls.Add(this.gbExpenses);
@@ -313,10 +254,25 @@ namespace ST10083941_PROG221_POE
             this.gbMain.ForeColor = System.Drawing.Color.Black;
             this.gbMain.Location = new System.Drawing.Point(0, 0);
             this.gbMain.Name = "gbMain";
-            this.gbMain.Size = new System.Drawing.Size(1038, 682);
+            this.gbMain.Size = new System.Drawing.Size(936, 544);
             this.gbMain.TabIndex = 7;
             this.gbMain.TabStop = false;
             this.gbMain.Text = "Welcome To Your Budget Planning App";
+            // 
+            // btnReport
+            // 
+            this.btnReport.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReport.ForeColor = System.Drawing.Color.Black;
+            this.btnReport.Location = new System.Drawing.Point(12, 472);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(912, 66);
+            this.btnReport.TabIndex = 8;
+            this.btnReport.Text = "Generate Report";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // gbVehicle
             // 
@@ -362,7 +318,7 @@ namespace ST10083941_PROG221_POE
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.ClientSize = new System.Drawing.Size(1038, 682);
+            this.ClientSize = new System.Drawing.Size(936, 544);
             this.Controls.Add(this.gbMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
@@ -376,7 +332,6 @@ namespace ST10083941_PROG221_POE
             this.gbIncome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudIncome)).EndInit();
-            this.gbReport.ResumeLayout(false);
             this.gbMain.ResumeLayout(false);
             this.gbVehicle.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -399,14 +354,11 @@ namespace ST10083941_PROG221_POE
         private System.Windows.Forms.Label lblTax;
         private System.Windows.Forms.Label lblCurrency;
         private System.Windows.Forms.Label lblIncome;
-        private System.Windows.Forms.GroupBox gbReport;
-        private System.Windows.Forms.RichTextBox rtbReport;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.GroupBox gbMain;
         private System.Windows.Forms.GroupBox gbVehicle;
         private System.Windows.Forms.RichTextBox rtbVehicle;
         private System.Windows.Forms.Button btnVehicle;
+        private System.Windows.Forms.Button btnReport;
     }
 }
 
