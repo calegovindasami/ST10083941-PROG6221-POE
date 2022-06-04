@@ -110,12 +110,13 @@ namespace ST10083941_PROG221_POE
             double totalDeposit = frmHomeLoan.TotalDeposit;
             double interest = frmHomeLoan.InterestRate;
             int monthsToRepay = frmHomeLoan.MonthsToRepay;
+            double income = Convert.ToDouble(nudIncome.Value);
 
             HomeLoan homeLoan = (HomeLoan)expense[HOMELOAN];
 
-            homeLoan.SetProperties(propertyPrice, totalDeposit, interest, monthsToRepay);
+            homeLoan.SetProperties(propertyPrice, totalDeposit, interest, monthsToRepay, income);
 
-            double monthlyLoanCost = homeLoan.CalculateCost();
+            double monthlyLoanCost = homeLoan.CalculateCost(HomeLoanAlert);
             expense[HOMELOAN].SetCost(Math.Round(monthlyLoanCost, 2));
             expense[RENT].SetCost(0);
 
@@ -205,6 +206,15 @@ namespace ST10083941_PROG221_POE
             this.Show();
 
 
+        }
+
+        public void HomeLoanAlert(double loan)
+        {
+            double income = Convert.ToDouble(nudIncome.Value);
+            if (loan > (income * 1/3))
+            {
+                MessageBox.Show("Warning! Your monthly home loan installment exceeds 1/3rd of your income.");
+            }
         }
     }
 }

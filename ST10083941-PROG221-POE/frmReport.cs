@@ -28,7 +28,7 @@ namespace ST10083941_PROG221_POE
         const int VEHICLE = 8;
 
         public double Income { get; set; }
-
+        public double TotalExpenses { get; set; }
 
 
         public frmReport(object sender, double income)
@@ -38,44 +38,65 @@ namespace ST10083941_PROG221_POE
             btnDesc.Text = "Descending " + char.ConvertFromUtf32(0x2193);
             btnAsc.Text = "Ascending " + char.ConvertFromUtf32(0x2191);
             expense = (List<Expenses>)sender;
+            TotalExpenses = CalculateTotalExpense(NotifyAlert);
             DisplayExpenses();
         }
 
         public void DisplayExpenses()
         {
+            List<Expenses> DescendingExpenses = expense.OrderByDescending(bill => bill.Cost).ToList();
             string allExpenses = "";
-            foreach (Expenses bills in expense)
+            foreach (Expenses bills in DescendingExpenses)
             {
                 allExpenses += bills.Message() + "\n";
             }
-            string message = $"Income: R{Income}\nEXPENSES\n\n" + allExpenses;
+            string availableIncome = $"Total Expenses: R{TotalExpenses}\nAvailable Income: {Income - TotalExpenses}";
+            string message = $"Income: R{Income}\n\nEXPENSES\n" + allExpenses + availableIncome;
             rtbAllExpenses.Text = message;
         }
 
         private void btnDesc_Click(object sender, EventArgs e)
         {
-            List<Expenses> DescendingExpenses = expense.OrderByDescending(bill => bill.Cost).ToList();
-            string allExpenses = "";
-
-            foreach (Expenses bills in DescendingExpenses)
-            {
-                allExpenses += bills.Message() + "\n";
-            }
-            string message = $"Income: R{Income}\nEXPENSES\n\n" + allExpenses;
-            rtbAllExpenses.Text = message;
+            DisplayExpenses();
         }
 
         private void btnAsc_Click(object sender, EventArgs e)
         {
-            List<Expenses> DescendingExpenses = expense.OrderBy(bill => bill.Cost).ToList();
+            List<Expenses> AscendingExpenses = expense.OrderBy(bill => bill.Cost).ToList();
             string allExpenses = "";
 
-            foreach (Expenses bills in DescendingExpenses)
+            foreach (Expenses bills in AscendingExpenses)
             {
                 allExpenses += bills.Message() + "\n";
             }
-            string message = $"Income: R{Income}\nEXPENSES\n\n" + allExpenses;
+            string availableIncome = $"Total Expenses: R{TotalExpenses}\nAvailable Income: {Income - TotalExpenses}";
+            string message = $"Income: R{Income}\n\nEXPENSES\n" + allExpenses + availableIncome;
             rtbAllExpenses.Text = message;
         }
+
+        public delegate void Expense(double total);
+
+        public void NotifyAlert(double total)
+        {
+            double percentage = 75.00 / 100.00;
+            double percentageIncome = (Income * percentage);
+            if (total > percentageIncome)
+            {
+                MessageBox.Show("Warning! Your expenses exceed 75% of your income.");
+            }
+        }
+
+        public double CalculateTotalExpense(Expense alert)
+        {
+            double total = 0;
+            foreach (Expenses bill in expense)
+            {
+                total += bill.Cost;
+            }
+            alert(total);
+            return total;
+        }
+
+        
     }
 }

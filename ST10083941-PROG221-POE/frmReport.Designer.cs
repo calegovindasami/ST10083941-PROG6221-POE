@@ -40,7 +40,7 @@ namespace ST10083941_PROG221_POE
             this.rtbAllExpenses.Location = new System.Drawing.Point(12, 56);
             this.rtbAllExpenses.Name = "rtbAllExpenses";
             this.rtbAllExpenses.ReadOnly = true;
-            this.rtbAllExpenses.Size = new System.Drawing.Size(365, 242);
+            this.rtbAllExpenses.Size = new System.Drawing.Size(365, 261);
             this.rtbAllExpenses.TabIndex = 0;
             this.rtbAllExpenses.Text = "";
             // 

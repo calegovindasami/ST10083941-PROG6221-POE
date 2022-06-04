@@ -35,6 +35,8 @@ namespace ST10083941_PROG221_POE.Classes
             double totalExpenses = monthlyCost + InsurancePremium;
             return totalExpenses;
         }
+
+
     }
 }
     
